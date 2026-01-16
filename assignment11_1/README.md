@@ -10,21 +10,21 @@ Based on the feature importance analysis, the following factors are the most inf
 
 ### Top 5 Most Important Features:
 
-1. **Manufacturer** - The car brand/manufacturer has the strongest impact on price
-2. **Condition** - Vehicle condition significantly affects valuation
-3. **Cylinders** - Engine size/configuration (now modeled as numeric) is a major price driver
-4. **Vehicle Type** - The type of vehicle (sedan, SUV, truck, etc.) impacts price
-5. **Fuel Type** - Fuel type (gas, diesel, hybrid, etc.) influences price
+1. **Manufacturer** (Importance: 1.97) - The car brand/manufacturer has the strongest impact on price
+2. **Condition** (Importance: 1.55) - Vehicle condition significantly affects valuation
+3. **Vehicle Type** (Importance: 0.71) - The type of vehicle (sedan, SUV, truck, etc.) impacts price
+4. **Fuel Type** (Importance: 0.51) - Fuel type (gas, diesel, hybrid, etc.) influences price
+5. **Paint Color** (Importance: 0.46) - Paint color has a moderate impact on price
 
 *Note: Feature importance values are measured differently for numeric vs categorical features. Numeric features use absolute coefficient values, while categorical features use the range method (max - min coefficient values).*
 
 ### Additional Important Features:
 
-- **Paint Color** (Importance: 0.41)
 - **Transmission** (Importance: 0.40)
-- **Drive Type** (Importance: 0.36)
+- **Drive Type** (Importance: 0.39)
 - **Year** (Importance: 0.31)
-- **Odometer** (Importance: 0.11)
+- **Odometer** (Importance: 0.10)
+- **Cylinders** (Importance: 0.07)
 
 ## Model Performance
 
@@ -42,20 +42,25 @@ This indicates the model generalizes well and provides reliable price prediction
    - **Vehicle Condition is Critical**: Invest in reconditioning to improve vehicle condition ratings, as this is the second-most important price driver
 
 ### 2. **Pricing Strategy**
-   - **Engine Configuration Matters**: Pay close attention to cylinder count (now modeled as a numeric feature), as it has a significant impact on price
    - **Vehicle Type Selection**: Different vehicle types have varying price impacts - align inventory mix with market demand
+   - **Fuel Type Consideration**: Fuel type (gas, diesel, hybrid, electric) has a meaningful impact on price - consider market preferences
 
 ### 3. **Marketing and Positioning**
    - **Emphasize Condition**: Highlight vehicle condition in listings, as this significantly affects consumer valuation
    - **Manufacturer Branding**: Leverage manufacturer reputation and brand value in marketing materials
 
 ### 4. **Data Collection Priorities**
-   - Ensure accurate recording of: manufacturer, condition, cylinders, vehicle type, and fuel type
-   - These five features together explain the majority of price variation
+   - Ensure accurate recording of: manufacturer, condition, vehicle type, fuel type, and paint color
+   - These top five features together explain the majority of price variation
+   - While cylinders is less important, it should still be recorded for completeness
 
 ## Methodology
 
 - **Dataset**: 426,880 used car listings (cleaned to 303,869 complete records)
+- **Data Cleaning**: 
+  - Removed records with missing critical information (model, odometer, year)
+  - Applied price filter: 0 < price ≤ $200,000 (removed zero prices and extreme outliers)
+  - Imputed missing values using contextual information (model, year, etc.)
 - **Model**: Linear Regression with log-transformed target variable
 - **Features**: 
   - Standardized numeric features: year, odometer, cylinders (cylinders converted from categorical to numeric during data preparation)
