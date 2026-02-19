@@ -1,0 +1,36 @@
+{
+  "include": [
+    "**/*.py",
+    "**/*.ipynb"
+  ],
+  "exclude": [
+    "**/node_modules",
+    "**/__pycache__",
+    "**/.*"
+  ],
+  "venvPath": ".",
+  "venv": "venv",
+  "pythonVersion": "3.8",
+  "pythonPlatform": "Darwin",
+  "typeCheckingMode": "basic",
+  "reportMissingImports": true,
+  "reportMissingTypeStubs": false,
+  "reportUnusedImport": false,
+  "reportUnusedVariable": false,
+  "reportUnusedClass": false,
+  "reportUnusedFunction": false,
+  "executionEnvironments": [
+    {
+      "root": "assignment11_1",
+      "pythonVersion": "3.8",
+      "pythonPlatform": "Darwin",
+      "extraPaths": []
+    },
+    {
+      "root": "assignment5_1",
+      "pythonVersion": "3.8",
+      "pythonPlatform": "Darwin",
+      "extraPaths": []
+    }
+  ]
+}
